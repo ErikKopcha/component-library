@@ -86,6 +86,97 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./source/js/components/calendar.js":
+/*!******************************************!*\
+  !*** ./source/js/components/calendar.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class Calendar {
+  constructor(baseContainerId) {
+    this.baseContainerId = baseContainerId;
+    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
+
+    if (!this.baseContainer) {
+      console.error('base container is not defined');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    this.baseContainer.forEach(el => {
+      el.innerHTML = `
+                <div class="calendar calendar_size_mini">
+                    <div class="calendar__inner">
+                        <div class="calendar__body-wrapper">
+                            <div class="calendar__header">
+                                October 2020
+                            </div>
+                            <div class="calendar__body">
+                                <div class="calendar__body-inner">
+                                    <span class="calendar__item calendar__item_day">Mon</span>
+                                    <span class="calendar__item calendar__item_day">Tue</span>
+                                    <span class="calendar__item calendar__item_day">Wed</span>
+                                    <span class="calendar__item calendar__item_day">Thu</span>
+                                    <span class="calendar__item calendar__item_day">Fri</span>
+                                    <span class="calendar__item calendar__item_day">Sat</span>
+                                    <span class="calendar__item calendar__item_day">Sun</span>
+                                    <span class="calendar__item"></span>
+                                    <span class="calendar__item"></span>
+                                    <span class="calendar__item"></span>
+                                    <span class="calendar__item"></span>
+                                    <span class="calendar__item"></span>
+                                    <span class="calendar__item">1</span>
+                                    <span class="calendar__item">2</span>
+                                    <span class="calendar__item">3</span>
+                                    <span class="calendar__item">4</span>
+                                    <span class="calendar__item">5</span>
+                                    <span class="calendar__item">6</span>
+                                    <span class="calendar__item">7</span>
+                                    <span class="calendar__item">8</span>
+                                    <span class="calendar__item">9</span>
+                                    <span class="calendar__item">10</span>
+                                    <span class="calendar__item calendar__item_active">11</span>
+                                    <span class="calendar__item calendar__item_between-active">12</span>
+                                    <span class="calendar__item calendar__item_between-active">13</span>
+                                    <span class="calendar__item calendar__item_between-active">14</span>
+                                    <span class="calendar__item calendar__item_active">15</span>
+                                    <span class="calendar__item">16</span>
+                                    <span class="calendar__item">17</span>
+                                    <span class="calendar__item">18</span>
+                                    <span class="calendar__item">19</span>
+                                    <span class="calendar__item">20</span>
+                                    <span class="calendar__item">21</span>
+                                    <span class="calendar__item">22</span>
+                                    <span class="calendar__item">23</span>
+                                    <span class="calendar__item">24</span>
+                                    <span class="calendar__item">25</span>
+                                    <span class="calendar__item">26</span>
+                                    <span class="calendar__item">27</span>
+                                    <span class="calendar__item">28</span>
+                                    <span class="calendar__item">29</span>
+                                    <span class="calendar__item">30</span>
+                                    <span class="calendar__item">31</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+    });
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Calendar);
+
+/***/ }),
+
 /***/ "./source/js/components/changeTheme.js":
 /*!*********************************************!*\
   !*** ./source/js/components/changeTheme.js ***!
@@ -142,7 +233,7 @@ __webpack_require__.r(__webpack_exports__);
 class Histogram {
   constructor(baseContainerId) {
     this.baseContainerId = baseContainerId;
-    this.baseContainer = document.getElementById(baseContainerId);
+    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
 
     if (!this.baseContainer) {
       console.error('base container is not defined');
@@ -199,7 +290,9 @@ class Histogram {
       "height": 25,
       "id": 15
     }];
-    this.baseContainer.innerHTML = ``;
+    this.baseContainer.forEach(el => {
+      el.innerHTML = ``;
+    });
     let histHead = document.createElement('div'),
         histBody = document.createElement('div');
     histHead.classList.add('histogram');
@@ -209,7 +302,9 @@ class Histogram {
         <span class="histogram__total">50399</span>
     `;
     histHead.appendChild(histBody);
-    this.baseContainer.appendChild(histHead);
+    this.baseContainer.forEach(el => {
+      el.appendChild(histHead);
+    });
     arr.forEach(el => {
       let bar = document.createElement('div');
       bar.classList.add('histogram__bar');
@@ -240,7 +335,7 @@ class CreateTooltip {
     this.needIcon = needIcon;
     this.tooltipText = tooltipText;
     this.baseContainerId = baseContainerId;
-    this.baseContainer = document.getElementById(baseContainerId);
+    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
 
     if (!this.baseContainer) {
       console.error('base container is not defined');
@@ -270,13 +365,17 @@ class CreateTooltip {
       let tooltipHelper = document.createElement('div');
       tooltipHelper.classList.add('tooltip__help');
       tooltipHelper.innerHTML = `<div class="tooltip__text">${this.tooltipText}</div>`;
-      this.baseContainer.classList.add('tooltip');
-      this.baseContainer.appendChild(tooltipHelper);
+      this.baseContainer.forEach(el => {
+        el.classList.add('tooltip');
+        el.classList.appendChild(tooltipHelper);
+      });
     }
   }
 
   renderToHTML() {
-    this.baseContainer.innerHTML = this.template;
+    this.baseContainer.forEach(el => {
+      el.innerHTML = this.template;
+    });
   }
 
 }
@@ -297,6 +396,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/changeTheme */ "./source/js/components/changeTheme.js");
 /* harmony import */ var _components_tooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/tooltip */ "./source/js/components/tooltip.js");
 /* harmony import */ var _components_histogram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/histogram */ "./source/js/components/histogram.js");
+/* harmony import */ var _components_calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/calendar */ "./source/js/components/calendar.js");
+
 
 
 
@@ -305,6 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {
     let createTooltip = new _components_tooltip__WEBPACK_IMPORTED_MODULE_1__["default"]('tooltip-container', true);
     let histogram = new _components_histogram__WEBPACK_IMPORTED_MODULE_2__["default"]('histogram-container');
+    let calendar = new _components_calendar__WEBPACK_IMPORTED_MODULE_3__["default"]('calendar-container');
   }, 1000);
 });
 
