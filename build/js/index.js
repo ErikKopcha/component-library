@@ -127,6 +127,164 @@ class ChangeTheme {
 
 /***/ }),
 
+/***/ "./source/js/components/histogram.js":
+/*!*******************************************!*\
+  !*** ./source/js/components/histogram.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _tooltip__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./tooltip */ "./source/js/components/tooltip.js");
+
+
+class Histogram {
+  constructor(baseContainerId) {
+    this.baseContainerId = baseContainerId;
+    this.baseContainer = document.getElementById(baseContainerId);
+
+    if (!this.baseContainer) {
+      console.error('base container is not defined');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    let arr = [{
+      "height": 10,
+      "id": 1
+    }, {
+      "height": 30,
+      "id": 2
+    }, {
+      "height": 53,
+      "id": 3
+    }, {
+      "height": 41,
+      "id": 4
+    }, {
+      "height": 87,
+      "id": 5
+    }, {
+      "height": 78,
+      "id": 6
+    }, {
+      "height": 90,
+      "id": 7
+    }, {
+      "height": 16,
+      "id": 8
+    }, {
+      "height": 25,
+      "id": 9
+    }, {
+      "height": 41,
+      "id": 10
+    }, {
+      "height": 87,
+      "id": 11
+    }, {
+      "height": 78,
+      "id": 12
+    }, {
+      "height": 90,
+      "id": 13
+    }, {
+      "height": 16,
+      "id": 14
+    }, {
+      "height": 25,
+      "id": 15
+    }];
+    this.baseContainer.innerHTML = ``;
+    let histHead = document.createElement('div'),
+        histBody = document.createElement('div');
+    histHead.classList.add('histogram');
+    histBody.classList.add('histogram__bars');
+    histHead.innerHTML = `
+        <h1 class="histogram__header">Total orders</h1>
+        <span class="histogram__total">50399</span>
+    `;
+    histHead.appendChild(histBody);
+    this.baseContainer.appendChild(histHead);
+    arr.forEach(el => {
+      let bar = document.createElement('div');
+      bar.classList.add('histogram__bar');
+      bar.id = `histogram__bar-${el.id}`;
+      bar.style.height = `${el.height}%`;
+      histBody.appendChild(bar);
+      new _tooltip__WEBPACK_IMPORTED_MODULE_0__["default"](`histogram__bar-${el.id}`, false, `Count: ${el.height}`);
+    });
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Histogram);
+
+/***/ }),
+
+/***/ "./source/js/components/tooltip.js":
+/*!*****************************************!*\
+  !*** ./source/js/components/tooltip.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class CreateTooltip {
+  constructor(baseContainerId, needIcon = true, tooltipText = 'Helper text') {
+    this.needIcon = needIcon;
+    this.tooltipText = tooltipText;
+    this.baseContainerId = baseContainerId;
+    this.baseContainer = document.getElementById(baseContainerId);
+
+    if (!this.baseContainer) {
+      console.error('base container is not defined');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    if (this.needIcon) {
+      this.template = `
+        <div class="tooltip">
+            <div class="tooltip__icon">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                  viewBox="0 0 24 24" class="svg-icon" fill="currentColor" id="light-theme-icon">
+                  <use xlink:href="#help"></use>
+              </svg>
+            </div>
+            <div class="tooltip__help">
+              <div class="tooltip__text">Helper text</div>
+            </div>
+        </div>
+      `;
+      this.renderToHTML(this.template);
+    } else {
+      let tooltipHelper = document.createElement('div');
+      tooltipHelper.classList.add('tooltip__help');
+      tooltipHelper.innerHTML = `<div class="tooltip__text">${this.tooltipText}</div>`;
+      this.baseContainer.classList.add('tooltip');
+      this.baseContainer.appendChild(tooltipHelper);
+    }
+  }
+
+  renderToHTML() {
+    this.baseContainer.innerHTML = this.template;
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateTooltip);
+
+/***/ }),
+
 /***/ "./source/js/index.js":
 /*!****************************!*\
   !*** ./source/js/index.js ***!
@@ -137,9 +295,17 @@ class ChangeTheme {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/changeTheme */ "./source/js/components/changeTheme.js");
+/* harmony import */ var _components_tooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/tooltip */ "./source/js/components/tooltip.js");
+/* harmony import */ var _components_histogram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/histogram */ "./source/js/components/histogram.js");
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   let changeTheme = new _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector('html'), document.querySelector('.toggle-mode-input'));
+  setTimeout(() => {
+    let createTooltip = new _components_tooltip__WEBPACK_IMPORTED_MODULE_1__["default"]('tooltip-container', true);
+    let histogram = new _components_histogram__WEBPACK_IMPORTED_MODULE_2__["default"]('histogram-container');
+  }, 1000);
 });
 
 /***/ })
