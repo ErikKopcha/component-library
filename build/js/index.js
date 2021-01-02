@@ -308,7 +308,7 @@ class Histogram {
     arr.forEach(el => {
       let bar = document.createElement('div');
       bar.classList.add('histogram__bar');
-      bar.id = `histogram__bar-${el.id}`;
+      bar.setAttribute('data-id', `histogram__bar-${el.id}`);
       bar.style.height = `${el.height}%`;
       histBody.appendChild(bar);
       new _tooltip__WEBPACK_IMPORTED_MODULE_0__["default"](`histogram__bar-${el.id}`, false, `Count: ${el.height}`);
@@ -367,7 +367,7 @@ class CreateTooltip {
       tooltipHelper.innerHTML = `<div class="tooltip__text">${this.tooltipText}</div>`;
       this.baseContainer.forEach(el => {
         el.classList.add('tooltip');
-        el.classList.appendChild(tooltipHelper);
+        el.appendChild(tooltipHelper);
       });
     }
   }
