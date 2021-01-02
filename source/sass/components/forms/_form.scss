@@ -1,0 +1,240 @@
+.form {
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1;
+}
+
+[role=button], a, area, button, input:not([type=range]), label, select, summary, textarea {
+    touch-action: manipulation; /* check it */
+}
+
+input[type=checkbox], input[type=radio] {
+    box-sizing: border-box;
+    padding: 0;
+}
+[role=button], a, area, button, input:not([type=range]), label, select, summary, textarea {
+    touch-action: manipulation;
+}
+
+.form input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    min-width: 1.75rem;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    opacity: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    overflow: visible;
+}
+
+.form .state {
+    line-height: 1.75rem;
+}
+
+.form .state label {
+    position: initial;
+    display: inline-block;
+    font-weight: 400;
+    margin: 0;
+    text-indent: 2.5rem;
+    min-width: 2.5rem;
+    line-height: 1.2;
+    font-size: 1rem;
+    color: var(--text-primary);
+}
+
+.form.form_round .state label:after,
+.form.form_round .state label:before {
+    border-radius: 100%;
+}
+
+.form .state label:after,
+.form .state label:before {
+    content: '';
+    width: 1.75rem;
+    height: 1.75rem;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid transparent;
+    z-index: 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: transparent;
+}
+
+.form.form_default input:checked ~ .state label:after {
+    background-color: var(--grey-2) !important;
+}
+
+.form.form_default .state label:after {
+    transform: scale(.6);
+}
+
+.form .state label:before {
+    border: 1px solid var(--grey-2);
+}
+
+/* checkbox */
+.form input:checked ~ .state label:before {
+    border: 2px solid var(--primary);
+}
+
+.form.form_curve .state label:after, .form.form_curve .state label:before {
+    border-radius: 20%;
+}
+
+.form.form_default input:checked ~ .state label:after {
+    background-color: var(--primary) !important;
+}
+
+/* with inline svg icon */
+
+.form.form_svg .state .svg {
+    position: absolute;
+    font-size: 1rem;
+    width: calc(1rem + 2px);
+    height: calc(1rem + 2px);
+    z-index: 1;
+    text-align: center;
+    line-height: normal;
+    top: 50%;
+    left: 0.3rem;
+    transform: translate(0, -50%);
+    border: 1px solid transparent;
+    opacity: 0;
+}
+
+.form input:checked ~ .state.-success .icon,
+.form input:checked ~ .state.-success .svg {
+    color: #fff;
+    stroke: #fff;
+}
+
+.form.form_svg input:checked ~ .state .svg {
+    opacity: 1;
+}
+
+.form.form_svg .state label:after {
+    transform: scale(1);
+}
+
+/* with pulse animation */
+
+.form.form_pulse:not(.form_toggle) input:checked ~ .state label:before {
+    animation: pulse 0.5s;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 #bdc3c7;
+    }
+    100% {
+        box-shadow: 0 0 0 1.5rem rgba(189, 195, 199, 0);
+    }
+}
+
+/* toggle */
+
+.form.form_toggle input,
+.form.form_toggle .state label {
+    min-width: 3.25rem;
+}
+
+.form.form_toggle .state {
+    position: relative;
+}
+
+.form.form_toggle .state:before {
+    content: '';
+    border: 1px solid var(--grey-2);
+    border-radius: 1rem;
+    width: 3.25rem;
+    box-sizing: border-box;
+    height: 1.75rem;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    transition: all .5s ease;
+}
+
+.form.form_toggle .state label {
+    text-indent: 4em;
+}
+
+.form.form_toggle .state label:after,
+.form.form_toggle .state label:before {
+    transition: left .5s ease;
+    border-radius: 100%;
+    left: 0;
+    border-color: transparent;
+    transform: scale(.8);
+}
+
+.form.form_toggle .state label:after {
+    background-color: var(--grey-2) !important;
+}
+
+.form.form_toggle input:checked ~ .state:before {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.form.form_toggle input:checked ~ .state label:before {
+    opacity: 0;
+}
+
+.form.form_toggle input:checked ~ .state label:after {
+    background-color: var(--white) !important;
+    left: 1.5rem;
+}
+
+.form.form_toggle.-has-icons {
+    display: flex;
+    align-items: center;
+}
+
+.form.form_toggle.-has-icons .state {
+    margin: 0 0.875rem;
+}
+
+.form.form_toggle.-has-icons .svg-icon {
+    font-size: 1.5rem;
+}
+
+.form.form_toggle.-has-icons input ~ .svg-icon,
+.form.form_toggle.-has-icons input:checked + .svg-icon + .state + .svg-icon {
+    fill: var(--grey-3);
+}
+
+
+/* disabled */
+
+.form input:disabled,
+.form input:disabled + .state {
+    cursor: default;
+    pointer-events: none;
+}
+
+.form input:disabled + .state label {
+    opacity: 0.5;
+}
+
+.form:not(.form_toggle) input:disabled + .state label:before {
+    background-color: var(--grey-2);
+}
+
+.form.form_toggle input:disabled + .state label:before,
+.form.form_toggle input:disabled + .state label:after {
+    background-color: var(--grey-3) !important;
+}
+
+.form.form_toggle input:disabled + .state:before {
+    background-color: var(--grey-2);
+}

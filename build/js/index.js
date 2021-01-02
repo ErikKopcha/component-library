@@ -86,6 +86,87 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./source/js/components/accordion.js":
+/*!*******************************************!*\
+  !*** ./source/js/components/accordion.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class Accordion {
+  constructor(baseContainerId) {
+    this.baseContainerId = baseContainerId;
+    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
+
+    if (!this.baseContainer) {
+      console.error('base container is not defined');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    this.baseContainer.forEach(el => {
+      el.innerHTML = `
+                <details class="expanded mb-sm">
+                    <summary class="expanded__trigger">Collapsable Group Item #1 <svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
+                        <use xlink:href="#angle"></use>
+                    </svg></summary>
+                    <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    amet.</div>
+                </details>
+                <details class="expanded mb-sm">
+                    <summary class="expanded__trigger">Collapsable Group Item #2 <svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
+                        <use xlink:href="#angle"></use>
+                    </svg></summary>
+                    <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    amet.</div>
+                </details>
+                <details class="expanded">
+                    <summary class="expanded__trigger">Collapsable Group Item #3 <svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
+                        <use xlink:href="#angle"></use>
+                    </svg></summary>
+                    <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    amet.</div>
+                </details>
+            `;
+    });
+    let accWrapper = document.querySelectorAll('.expanded');
+    accWrapper.forEach(el => {
+      const trigger = el.querySelector('.expanded__trigger');
+      const content = el.querySelector('.expanded__content');
+      el.addEventListener('click', () => {
+        el.classList.toggle('open');
+        console.log('trigger.offsetHeight', trigger.offsetHeight);
+        console.log('content.offsetHeight', content.offsetHeight);
+
+        if (el.classList.contains('open')) {
+          el.style.height = `${trigger.offsetHeight + 150}px`;
+        } else {
+          el.style.height = ``;
+        }
+      });
+    });
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Accordion);
+
+/***/ }),
+
 /***/ "./source/js/components/calendar.js":
 /*!******************************************!*\
   !*** ./source/js/components/calendar.js ***!
@@ -321,6 +402,52 @@ class Histogram {
 
 /***/ }),
 
+/***/ "./source/js/components/skeleton.js":
+/*!******************************************!*\
+  !*** ./source/js/components/skeleton.js ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class Skeleton {
+  constructor(baseContainerId) {
+    this.baseContainerId = baseContainerId;
+    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
+
+    if (!this.baseContainer) {
+      console.error('base container is not defined');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    this.baseContainer.forEach(el => {
+      el.innerHTML = `
+                <div class="loading-skeleton">
+                    <div class="d-flex mb-md">
+                    <div class="circle-skeleton"></div>
+                    <div class="flex-grow mt-sm ml-md">
+                        <div class="short-loading-line mb-sm"></div>
+                        <div class="middle-loading-line"></div>
+                    </div>
+                    </div>
+                    <div class="loading-line mb-sm"></div>
+                    <div class="middle-loading-line"></div>
+                </div>
+            `;
+    });
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Skeleton);
+
+/***/ }),
+
 /***/ "./source/js/components/tooltip.js":
 /*!*****************************************!*\
   !*** ./source/js/components/tooltip.js ***!
@@ -397,6 +524,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_tooltip__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/tooltip */ "./source/js/components/tooltip.js");
 /* harmony import */ var _components_histogram__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/histogram */ "./source/js/components/histogram.js");
 /* harmony import */ var _components_calendar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/calendar */ "./source/js/components/calendar.js");
+/* harmony import */ var _components_skeleton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/skeleton */ "./source/js/components/skeleton.js");
+/* harmony import */ var _components_accordion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/accordion */ "./source/js/components/accordion.js");
+
+
 
 
 
@@ -407,6 +538,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let createTooltip = new _components_tooltip__WEBPACK_IMPORTED_MODULE_1__["default"]('tooltip-container', true);
     let histogram = new _components_histogram__WEBPACK_IMPORTED_MODULE_2__["default"]('histogram-container');
     let calendar = new _components_calendar__WEBPACK_IMPORTED_MODULE_3__["default"]('calendar-container');
+    let skeleton = new _components_skeleton__WEBPACK_IMPORTED_MODULE_4__["default"]('skeleton-container');
+    let accordion = new _components_accordion__WEBPACK_IMPORTED_MODULE_5__["default"]('accordion-container');
   }, 1000);
 });
 

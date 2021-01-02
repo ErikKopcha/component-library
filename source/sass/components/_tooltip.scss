@@ -1,0 +1,80 @@
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+.tooltip::before {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+}
+
+.tooltip__icon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    position: relative;
+}
+
+.tooltip__icon .svg-icon {
+    fill: none;
+    color: var(--primary);
+    width: 100%;
+    height: 100%;
+}
+
+.tooltip__help {
+    height: 45px;
+    border-radius: 10px;
+    background: var(--primary);
+    position: absolute;
+    bottom: 100%;
+    transform: translate(-50%, -10px);
+    left: 50%;
+    color: var(--white);
+    padding: 13px 21px;
+    opacity: 0;
+    transition: opacity 0.2s linear, transform 0.1s linear;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+.tooltip:hover .tooltip__help {
+    opacity: 1;
+    transform: translate(-50%, -13px);
+    pointer-events: all;
+    box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.5);
+}
+
+.tooltip_force-show-helper .tooltip__help {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -13px);
+}
+
+.tooltip__help:after {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+}
+
+.tooltip__help:after {
+    border: 7px solid transparent;
+    border-top: 7px solid var(--primary);
+}
+
+.tooltip__help:after {
+    position: absolute;
+    display: inline-block;
+    content: "";
+}
+
+.tooltip__text {
+    margin: auto;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

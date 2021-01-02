@@ -1,0 +1,35 @@
+@import "base/mixins";
+@import "base/variables";
+@import "base/layout";
+
+// Blocks imports
+@import "blocks/header";
+@import "blocks/main";
+@import "blocks/footer";
+
+/* resets */
+@import "./resets/_normalize";
+@import "./resets/_reset";
+@import "./resets/_typography";
+
+/* globals */
+@import "_mode";
+@import "_grid";
+@import "_globals";
+@import "_helpers";
+
+/* components */
+@import "./components/_alerts";
+@import "./components/_avatar";
+@import "./components/_buttons";
+@import "./components/forms/_index";
+@import "./components/_tabs";
+@import "./components/_card";
+@import "./components/_skeleton";
+@import "./components/_modal";
+@import "./components/_expanded";
+@import "./components/_dropdown";
+@import "./components/_menu";
+@import "./components/_tooltip";
+@import "./components/_calendar";
+@import "./components/_historgam";
