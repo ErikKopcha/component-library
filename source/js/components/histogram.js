@@ -97,7 +97,7 @@ class Histogram {
     arr.forEach(el => {
         let bar = document.createElement('div');
         bar.classList.add('histogram__bar');
-        bar.setAttribute('data-id', `histogram__bar-${el.id}`);
+        bar.id = `histogram__bar-${el.id}`;
         bar.style.height = `${el.height}%`;
 
         histBody.appendChild(bar);
