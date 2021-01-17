@@ -66,6 +66,10 @@
     margin-left: 2rem !important;
 }
 
+.mt-a {
+    margin-top: auto;
+}
+
 .hidden,
 .hidden-sm {
     display: none !important;
@@ -130,9 +134,21 @@
 }
 
 .d-flex {
-    display: flex;
+    display: flex !important;
 }
 
 .justify-center {
-    justify-content: center;
+    justify-content: center !important; 
+}
+
+.align-center {
+    align-items: center !important;
+}
+
+.align-top {
+    align-items: flex-start !important;
+}
+
+.justify-between {
+    justify-content: space-between !important;
 }

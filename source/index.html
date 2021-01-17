@@ -193,6 +193,7 @@
       </g>
     </defs>
   </svg>
+
   <main>
 
     <header class="header">
@@ -233,10 +234,10 @@
           </div>
           <!-- Mobile Modal Window - end -->
           <div class="header__logo">
-            <svg fill="none" height="32" viewBox="0 0 110 32" width="110" xmlns="http://www.w3.org/2000/svg">
+            <svg fill="currentColor" height="32" viewBox="0 0 110 32" width="110">
               <g>
                 <path d="m0 1h30v30h-30z" />
-                <rect height="32" rx="16" width="32" x="38" />
+                <rect class="animation-tic" height="32" rx="16" width="32" x="38" />
                 <path d="m78 0 32 32h-32z" />
               </g>
             </svg>
@@ -263,326 +264,24 @@
       </div>
     </header>
 
-    <section class="flex-grow">
-      <div class="container">
-        <h1 class="mb-xl mt-md">Reusable component library</h1>
-      </div>
+    <section>
+      <div class="section__head">
+        <div class="container">
+          <h1 class="mb-xl mt-md">Reusable component library</h1>
 
-      <div class="tabs">
+          <form action="" role="search" class="search mb-xl">
+            <input type="text" class="search-input" placeholder="Search for anything" aria-label="Search">
+          </form>
 
-        <input checked="checked" id="tab1" type="radio" name="tabs" />
-        <input id="tab2" type="radio" name="tabs" />
-        <input id="tab3" type="radio" name="tabs" />
-        <input id="tab4" type="radio" name="tabs" />
+          <button class="btn-back mb-xl d-none">Back</button>
 
-        <nav class="tabs__nav">
-          <div class="container">
-            <ul class="tabs__menu">
-              <li>
-                <label for="tab1">All components</label>
-              </li>
-              <li>
-                <label for="tab2">Atoms</label>
-              </li>
-              <li>
-                <label for="tab3">Molecules</label>
-              </li>
-              <li>
-                <label for="tab4">Organisms</label>
-              </li>
-            </ul>
-          </div>
-        </nav>
+          <div class="components" id="components"></div>
 
-        <div class="tabs__divider"></div>
-
-        <section>
-          <div class="tabs__tab-content -bg-grey tabs__tab-content-1">
-            <div class="container">
-              <div class="card-grid">
-                <div class="card">
-                  <div data-id="histogram-container" class="card__body">
-                    <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Histogram</h4>
-                    <p>Organism</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div data-id="accordion-container" class="card__body accordion" style="flex-direction: column;">
-                    <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Accordion</h4>
-                    <p>Organism</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div data-id="calendar-container" class="card__body container_preview">
-                    <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Calendar</h4>
-                    <p>Molecule</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div data-id="skeleton-container" class="card__body container_preview">
-                    <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Skeleton</h4>
-                    <p>Molecule</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div data-id="tooltip-container" class="card__body">
-                    <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Tooltip</h4>
-                    <p>Atom</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tabs__tab-content -bg-grey tabs__tab-content-2">
-            <div class="container mb-xl">
-              <div class="card-grid">
-                <div class="card">
-                  <div data-id="tooltip-container" class="card__body">
-                    <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Tooltip</h4>
-                    <p>Atom</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container mb-xl">
-              <h3 class="mb-xl text-secondary text-uppercase mt-xxl">Buttons</h3>
-              <div class="grid-4-columns">
-                <button type="button" class="button">Button</button>
-                <button type="button" class="button" disabled>Button disabled</button>
-                <button type="button" class="button -primary">Primary</button>
-                <button type="button" class="button -primary" disabled><span class="button__text">Primary
-                    disabled</span></button>
-                <button type="button" class="button -secondary">Secondary</button>
-                <button type="button" class="button -secondary" disabled><span class="button__text">Secondary
-                    disabled</span></button>
-                <button type="button" class="button -alternate">Alternate</button>
-                <button type="button" class="button -alternate" disabled>Alternate disabled</button>
-              </div>
-            </div>
-            <div class="container">
-              <h3 class="mb-xl text-secondary text-uppercase mt-xxl">Custom form elements</h3>
-              <div class="grid-3-columns">
-                <div class="form form_default form_round">
-                  <input type="radio" name="radio1">
-                  <div class="state">
-                    <label>Male</label>
-                  </div>
-                </div>
-                <div class="form form_default form_round">
-                  <input type="radio" name="radio1">
-                  <div class="state">
-                    <label>Female</label>
-                  </div>
-                </div>
-                <div class="form form_default form_round">
-                  <input type="radio" name="radio1" disabled>
-                  <div class="state">
-                    <label>Special</label>
-                  </div>
-                </div>
-                <div class="form form_default form_curve form_svg form_pulse">
-                  <input type="checkbox" checked>
-                  <div class="state">
-                    <svg class="svg svg-icon" fill="none" height="13" viewBox="0 0 15 13" width="15">
-                      <path d="m1.5 7.5 3.5 3.5 8-9" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="3" /></svg>
-                    <label>Default</label>
-                  </div>
-                </div>
-                <div class="form form_default form_curve form_svg form_pulse">
-                  <input type="checkbox">
-                  <div class="state">
-                    <svg class="svg svg-icon" fill="none" height="13" viewBox="0 0 15 13" width="15">
-                      <path d="m1.5 7.5 3.5 3.5 8-9" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="3" /></svg>
-                    <label>Default</label>
-                  </div>
-                </div>
-                <div class="form form_default form_curve form_svg form_pulse">
-                  <input type="checkbox" disabled>
-                  <div class="state">
-                    <svg class="svg svg-icon" fill="none" height="13" viewBox="0 0 15 13" width="15">
-                      <path d="m1.5 7.5 3.5 3.5 8-9" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                        stroke-width="3" /></svg>
-                    <label>Default</label>
-                  </div>
-                </div>
-                <div class="form form_toggle">
-                  <input type="checkbox" checked>
-                  <div class="state">
-                    <label>Toggle</label>
-                  </div>
-                </div>
-                <div class="form form_toggle">
-                  <input type="checkbox">
-                  <div class="state">
-                    <label>Toggle</label>
-                  </div>
-                </div>
-                <div class="form form_toggle">
-                  <input type="checkbox" disabled>
-                  <div class="state">
-                    <label>Toggle</label>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tabs__tab-content -bg-grey tabs__tab-content-3">
-            <div class="container mb-xl">
-              <div class="card-grid">
-                <div class="card">
-                  <div class="card__body">
-                    <div class="grid-2-columns container_preview">
-                      <div class="form form_default form_round">
-                        <input type="radio" name="radio1">
-                        <div class="state">
-                          <label>Default</label>
-                        </div>
-                      </div>
-                      <div class="form form_default form_round">
-                        <input type="radio" name="radio1" checked>
-                        <div class="state">
-                          <label>Selected</label>
-                        </div>
-                      </div>
-                      <div class="form form_default form_curve form_svg form_pulse">
-                        <input type="checkbox">
-                        <div class="state">
-                          <svg class="svg svg-icon" fill="none" height="13" viewBox="0 0 15 13" width="15">
-                            <path d="m1.5 7.5 3.5 3.5 8-9" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="3" /></svg>
-                          <label>Default</label>
-                        </div>
-                      </div>
-                      <div class="form form_default form_curve form_svg form_pulse">
-                        <input type="checkbox" checked>
-                        <div class="state">
-                          <svg class="svg svg-icon" fill="none" height="13" viewBox="0 0 15 13" width="15">
-                            <path d="m1.5 7.5 3.5 3.5 8-9" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"
-                              stroke-width="3" /></svg>
-                          <label>Checked</label>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Custom form elements</h4>
-                    <p>Molecules</p>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card__body">
-                    <div data-id="calendar-container" class="card__body container_preview">
-                      <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                    </div>
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Calendar</h4>
-                    <p>Molecule</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="container mb-xl">
-              <div data-id="skeleton-container" class="card__body container_preview">
-                <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-              </div>
-            </div>
-            <div class="container mb-xl hidden">
-              <h3 class="mb-xl text-secondary text-uppercase mt-xxl">Dropdown</h3>
-              <details class="dropdown">
-                <summary class="button -secondary dropdown__toggle">Dropdown button</summary>
-                <div class="dropdown__menu">
-                  <a class="dropdown__item" href="#">Action</a>
-                  <a class="dropdown__item" href="#">Another action</a>
-                  <a class="dropdown__item" href="#">Something else here</a>
-                </div>
-              </details>
-            </div>
-            <div class="container">
-              <h3 class="mb-xl text-secondary text-uppercase mt-xxl">Custom form elements</h3>
-              <div class="form-group">
-                <label class="form-group__label" for="input">Label</label>
-                <div class="form-group__input">
-                  <input type="text" id="input">
-                </div>
-                <div class="form-group__status">Some status</div>
-              </div>
-              <div class="form-group form-group__error">
-                <label class="form-group__label" for="input2">Label</label>
-                <div class="form-group__input">
-                  <input type="text" id="input2">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"
-                    class="svg-icon form-group__icon" fill="currentColor">
-                    <use xlink:href="#error"></use>
-                  </svg>
-                </div>
-                <div class="form-group__status">Some status</div>
-              </div>
-              <div class="form-group form-group__success">
-                <label class="form-group__label" for="input3">Label</label>
-                <div class="form-group__input">
-                  <input type="text" id="input3">
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"
-                    class="svg-icon form-group__icon" fill="currentColor">
-                    <use xlink:href="#success"></use>
-                  </svg>
-                </div>
-                <div class="form-group__status">Some status</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="tabs__tab-content -bg-grey tabs__tab-content-4">
-            <!-- <div class="container mb-xl">
-              <div class="card-grid">
-                <div class="card">
-                  <div class="card__body">
-                    <section data-id="histogram-container" class="histogram">
-                      <img src="./icons/spinner.svg" style="width: 100px; height: 100px; display: block;" alt="">
-                    </section>
-                  </div>
-                  <div class="card__footer">
-                    <h4 class="card__title font-weight-semibold">Histogram</h4>
-                    <p>Organism</p>
-                  </div>
-                </div>
-              </div>
-            </div> -->
-            <div class="container">
-              <h3 class="mb-xl text-secondary text-uppercase mt-xxl">Accordion</h3>
-              <div data-id="accordion-container" class="accordion">
-
-              </div>
-            </div>
-          </div>
-        </section>
+        </div>
       </div>
     </section>
 
-    <footer class="footer">
+    <footer class="footer mt-a">
       <div class="footer__inner">
         <div class="header__logo">
           <svg fill="none" height="32" viewBox="0 0 110 32" width="110" xmlns="http://www.w3.org/2000/svg">

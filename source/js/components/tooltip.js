@@ -1,9 +1,9 @@
 class CreateTooltip {
-  constructor(baseContainerId, needIcon = true, tooltipText = 'Helper text') {
-    this.needIcon = needIcon;
-    this.tooltipText = tooltipText;
+  constructor(baseContainerId, options = {}) {
+    this.needIcon = options.needIcon;
+    this.tooltipText = options.tooltipText;
     this.baseContainerId = baseContainerId;
-    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
+    this.baseContainer = document.getElementById(baseContainerId);
 
     if (!this.baseContainer) {
         console.error('base container is not defined');
@@ -35,17 +35,13 @@ class CreateTooltip {
       tooltipHelper.classList.add('tooltip__help');
       tooltipHelper.innerHTML = `<div class="tooltip__text">${this.tooltipText}</div>`;
 
-      this.baseContainer.forEach(el => {
-        el.classList.add('tooltip');
-        el.appendChild(tooltipHelper);
-      });
+      this.baseContainer.classList.add('tooltip');
+      this.baseContainer.appendChild(tooltipHelper);
     }
   }
 
   renderToHTML() {
-    this.baseContainer.forEach(el => {
-      el.innerHTML = this.template;
-    });
+    this.baseContainer.innerHTML = this.template;
   }
 }
 

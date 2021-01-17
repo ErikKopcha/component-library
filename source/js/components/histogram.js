@@ -3,7 +3,7 @@ import CreateTooltip from './tooltip';
 class Histogram {
   constructor(baseContainerId) {
     this.baseContainerId = baseContainerId;
-    this.baseContainer = document.querySelectorAll(`[data-id="${baseContainerId}"]`);
+    this.baseContainer = document.getElementById(baseContainerId);
 
     if (!this.baseContainer) {
       console.error('base container is not defined');
@@ -78,9 +78,7 @@ class Histogram {
         
     ]
 
-    this.baseContainer.forEach(el => {
-        el.innerHTML = ``;
-    });
+    this.baseContainer.innerHTML = ``;
 
     let histHead = document.createElement('div'),
         histBody = document.createElement('div');
@@ -94,9 +92,7 @@ class Histogram {
 
     histHead.appendChild(histBody);
 
-    this.baseContainer.forEach(el => {
-        el.appendChild(histHead);
-    });
+    this.baseContainer.appendChild(histHead);
 
     arr.forEach(el => {
         let bar = document.createElement('div');
@@ -105,7 +101,10 @@ class Histogram {
         bar.style.height = `${el.height}%`;
 
         histBody.appendChild(bar);
-        new CreateTooltip(`histogram__bar-${el.id}`, false, `Count: ${el.height}`);
+        new CreateTooltip(`histogram__bar-${el.id}`, {
+            needIcon: false, 
+            tooltipText: `Count: ${el.height}`
+        });
     });
   }
 }
