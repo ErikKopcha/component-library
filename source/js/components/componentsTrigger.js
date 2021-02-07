@@ -5,6 +5,7 @@ import Calendar from './calendar';
 import Skeleton from './skeleton';
 import Accordion from './accordion';
 import ComponentsList from './componentsList';
+import UploadFiles from './uploadFiles';
 
 class ComponentsTrigger {
   constructor() {
@@ -61,6 +62,9 @@ class ComponentsTrigger {
                 needIcon: true, 
                 tooltipText: 'Helper text'
               })
+              break;
+            case 'files': 
+              new UploadFiles(`components`);
               break;
           }
         });

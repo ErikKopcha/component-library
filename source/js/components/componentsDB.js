@@ -4,21 +4,25 @@ let componentsDB = [
     "id": 1
   },
   {
-    "name": "calendar",
+    "name": "files",
     "id": 2
   },
   {
-    "name": "accordion",
+    "name": "calendar",
     "id": 3
   },
   {
-    "name": "skeleton",
+    "name": "accordion",
     "id": 4
   },
   {
-    "name": "tooltip",
+    "name": "skeleton",
     "id": 5
   },
+  {
+    "name": "tooltip",
+    "id": 6
+  }
 ];
 
 export default componentsDB;

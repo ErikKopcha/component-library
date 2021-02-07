@@ -16,23 +16,23 @@ class Histogram {
   init() {
     let arr = [
         {
-            "height": 10,
+            "height": 50,
             "id": 1
         },
         {
-            "height": 30,
+            "height": 37,
             "id": 2
         },
         {
-            "height": 53,
+            "height": 73,
             "id": 3
         },
         {
-            "height": 41,
+            "height": 81,
             "id": 4
         },
         {
-            "height": 87,
+            "height": 127,
             "id": 5
         },
         {
@@ -44,11 +44,11 @@ class Histogram {
             "id": 7
         },
         {
-            "height": 16,
+            "height": 56,
             "id": 8
         },
         {
-            "height": 25,
+            "height": 65,
             "id": 9
         },
         {
@@ -68,11 +68,11 @@ class Histogram {
             "id": 13
         },
         {
-            "height": 16,
+            "height": 76,
             "id": 14
         },
         {
-            "height": 25,
+            "height": 55,
             "id": 15
         },
         

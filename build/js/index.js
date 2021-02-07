@@ -372,6 +372,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _skeleton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./skeleton */ "./source/js/components/skeleton.js");
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accordion */ "./source/js/components/accordion.js");
 /* harmony import */ var _componentsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./componentsList */ "./source/js/components/componentsList.js");
+/* harmony import */ var _uploadFiles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./uploadFiles */ "./source/js/components/uploadFiles.js");
+
 
 
 
@@ -440,6 +442,10 @@ class ComponentsTrigger {
                 tooltipText: 'Helper text'
               });
               break;
+
+            case 'files':
+              new _uploadFiles__WEBPACK_IMPORTED_MODULE_7__["default"](`components`);
+              break;
           }
         });
       }
@@ -479,19 +485,19 @@ class Histogram {
 
   init() {
     let arr = [{
-      "height": 10,
+      "height": 50,
       "id": 1
     }, {
-      "height": 30,
+      "height": 37,
       "id": 2
     }, {
-      "height": 53,
+      "height": 73,
       "id": 3
     }, {
-      "height": 41,
+      "height": 81,
       "id": 4
     }, {
-      "height": 87,
+      "height": 127,
       "id": 5
     }, {
       "height": 78,
@@ -500,10 +506,10 @@ class Histogram {
       "height": 90,
       "id": 7
     }, {
-      "height": 16,
+      "height": 56,
       "id": 8
     }, {
-      "height": 25,
+      "height": 65,
       "id": 9
     }, {
       "height": 41,
@@ -518,10 +524,10 @@ class Histogram {
       "height": 90,
       "id": 13
     }, {
-      "height": 16,
+      "height": 76,
       "id": 14
     }, {
-      "height": 25,
+      "height": 55,
       "id": 15
     }];
     this.baseContainer.innerHTML = ``;
@@ -654,6 +660,38 @@ class CreateTooltip {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateTooltip);
+
+/***/ }),
+
+/***/ "./source/js/components/uploadFiles.js":
+/*!*********************************************!*\
+  !*** ./source/js/components/uploadFiles.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class UploadFiles {
+  constructor(baseContainerId) {
+    this.baseContainerId = baseContainerId;
+    this.baseContainer = document.getElementById(baseContainerId);
+
+    if (!this.baseContainer) {
+      console.error('base container is not defined');
+      return;
+    }
+
+    this.init();
+  }
+
+  init() {
+    this.baseContainer.innerHTML = ``;
+  }
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (UploadFiles);
 
 /***/ }),
 
