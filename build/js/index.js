@@ -109,54 +109,42 @@ class Accordion {
   }
 
   init() {
-    this.baseContainer.innerHTML = `
-            <details class="expanded mb-sm">
-                <summary class="expanded__trigger">Collapsable Group Item #1 <svg
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
-                    <use xlink:href="#angle"></use>
-                </svg></summary>
-                <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-                amet.</div>
-            </details>
-            <details class="expanded mb-sm">
-                <summary class="expanded__trigger">Collapsable Group Item #2 <svg
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
-                    <use xlink:href="#angle"></use>
-                </svg></summary>
-                <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-                amet.</div>
-            </details>
-            <details class="expanded">
-                <summary class="expanded__trigger">Collapsable Group Item #3 <svg
-                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                    viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
-                    <use xlink:href="#angle"></use>
-                </svg></summary>
-                <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
-                sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-                amet.</div>
-            </details>
-        `;
-    let accWrapper = document.querySelectorAll('.expanded');
-    accWrapper.forEach(el => {
-      const trigger = el.querySelector('.expanded__trigger');
-      const content = el.querySelector('.expanded__content');
-      el.addEventListener('click', () => {
-        el.classList.toggle('open');
-        console.log('trigger.offsetHeight', trigger.offsetHeight);
-        console.log('content.offsetHeight', content.offsetHeight);
+    this.baseContainer.innerHTML = ``;
 
-        if (el.classList.contains('open')) {
-          el.style.height = `${trigger.offsetHeight + 150}px`;
+    for (let i = 0; i < 3; i++) {
+      let accordionItem = document.createElement('details');
+      accordionItem.className = `expanded mb-sm`;
+      accordionItem.innerHTML = `
+                <summary class="expanded__trigger">
+                    Collapsable Group Item #${i} 
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        viewBox="0 0 24 24" class="svg-icon expanded__trigger-icon" fill="currentColor">
+                        <use xlink:href="#angle"></use>
+                    </svg>
+                </summary>
+                <div class="expanded__content">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    sint. Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
+                    amet.
+                </div>
+            `;
+      this.baseContainer.appendChild(accordionItem);
+      const trigger = accordionItem.querySelector('.expanded__trigger');
+      const content = accordionItem.querySelector('.expanded__content');
+      trigger.addEventListener('click', () => {
+        if (accordionItem.classList.contains('open')) {
+          accordionItem.classList.remove('open');
+          accordionItem.style.height = ``;
         } else {
-          el.style.height = ``;
+          accordionItem.classList.add('open');
+          accordionItem.style.height = `${trigger.offsetHeight + 100}px`;
         }
       });
-    });
+    }
   }
 
 }
@@ -308,17 +296,20 @@ let componentsDB = [{
   "name": "histogram",
   "id": 1
 }, {
-  "name": "calendar",
+  "name": "files",
   "id": 2
 }, {
-  "name": "accordion",
+  "name": "calendar",
   "id": 3
 }, {
-  "name": "skeleton",
+  "name": "accordion",
   "id": 4
 }, {
-  "name": "tooltip",
+  "name": "skeleton",
   "id": 5
+}, {
+  "name": "tooltip",
+  "id": 6
 }];
 /* harmony default export */ __webpack_exports__["default"] = (componentsDB);
 
