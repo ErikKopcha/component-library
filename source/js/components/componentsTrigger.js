@@ -16,6 +16,7 @@ class ComponentsTrigger {
 
   _getControlElements() {
     this.btnBack = document.querySelector('.btn-back');
+    this.searchField = document.querySelector('.search-input');
   }
 
   _showBtnBack() {
@@ -33,8 +34,22 @@ class ComponentsTrigger {
   _triggers() {
     this.btnBack.addEventListener('click', () => {
       this._hideBtnBack()
-      new ComponentsList('components');
+      new ComponentsList('components', componentsDB);
       new ComponentsTrigger();
+    });
+
+    this.searchField.addEventListener('input', () => {
+      let value = this.searchField.value.toLowerCase().trim();
+
+        componentsDB.forEach(el => {
+          try {
+            if (el.name.toLowerCase().search(value) == -1) {
+              document.querySelector(`[data-name="${el.name}"]`).classList.add('hidden');
+            } else {
+              document.querySelector(`[data-name="${el.name}"]`).classList.remove('hidden');
+            }
+          } catch(e) {}
+        });
     });
 
     componentsDB.forEach(component => {

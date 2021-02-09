@@ -19,8 +19,6 @@
 @import "_helpers";
 
 /* components */
-@import "./components/_alerts";
-@import "./components/_avatar";
 @import "./components/_buttons";
 @import "./components/forms/_index";
 @import "./components/_tabs";
@@ -28,8 +26,8 @@
 @import "./components/_skeleton";
 @import "./components/_modal";
 @import "./components/_expanded";
-@import "./components/_dropdown";
 @import "./components/_menu";
 @import "./components/_tooltip";
 @import "./components/_calendar";
 @import "./components/_historgam";
+@import "./components/_uploadFile";

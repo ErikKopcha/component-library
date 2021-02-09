@@ -293,10 +293,10 @@ class ChangeTheme {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 let componentsDB = [{
-  "name": "histogram",
+  "name": "files",
   "id": 1
 }, {
-  "name": "files",
+  "name": "histogram",
   "id": 2
 }, {
   "name": "calendar",
@@ -324,13 +324,11 @@ let componentsDB = [{
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _componentsDB__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./componentsDB */ "./source/js/components/componentsDB.js");
-
-
 class ComponentsList {
-  constructor(baseContainerId) {
+  constructor(baseContainerId, itemsArr = []) {
     this.baseContainerId = baseContainerId;
     this.baseContainer = document.getElementById(baseContainerId);
+    this.itemsArr = itemsArr;
 
     if (!this.baseContainer) {
       console.error('base container is not defined');
@@ -343,8 +341,8 @@ class ComponentsList {
   _renderList() {
     this.baseContainer.innerHTML = `
       <ul class="components__list">
-        ${_componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"].map(component => {
-      return `<li class="components__item" data-name="${component.name}">${component.name}</li>`;
+        ${this.itemsArr.map(item => {
+      return `<li class="components__item" data-name="${item.name}">${item.name}</li>`;
     }).join('')}
       </ul>
     `;
@@ -391,6 +389,7 @@ class ComponentsTrigger {
 
   _getControlElements() {
     this.btnBack = document.querySelector('.btn-back');
+    this.searchField = document.querySelector('.search-input');
   }
 
   _showBtnBack() {
@@ -409,8 +408,20 @@ class ComponentsTrigger {
     this.btnBack.addEventListener('click', () => {
       this._hideBtnBack();
 
-      new _componentsList__WEBPACK_IMPORTED_MODULE_6__["default"]('components');
+      new _componentsList__WEBPACK_IMPORTED_MODULE_6__["default"]('components', _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"]);
       new ComponentsTrigger();
+    });
+    this.searchField.addEventListener('input', () => {
+      let value = this.searchField.value.toLowerCase().trim();
+      _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"].forEach(el => {
+        try {
+          if (el.name.toLowerCase().search(value) == -1) {
+            document.querySelector(`[data-name="${el.name}"]`).classList.add('hidden');
+          } else {
+            document.querySelector(`[data-name="${el.name}"]`).classList.remove('hidden');
+          }
+        } catch (e) {}
+      });
     });
     _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"].forEach(component => {
       let item = document.querySelector(`[data-name="${component.name}"]`);
@@ -686,7 +697,14 @@ class UploadFiles {
   }
 
   init() {
-    this.baseContainer.innerHTML = ``;
+    this.baseContainer.innerHTML = `
+      <div class="upload-file-container">
+        <div class="card d-flex">
+          <button class="components__item">Open</button>
+          <button class="components__item">Download</button>
+        </div>
+      </div>
+    `;
   }
 
 }
@@ -705,15 +723,17 @@ class UploadFiles {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/changeTheme */ "./source/js/components/changeTheme.js");
-/* harmony import */ var _components_componentsList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/componentsList */ "./source/js/components/componentsList.js");
-/* harmony import */ var _components_componentsTrigger__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/componentsTrigger */ "./source/js/components/componentsTrigger.js");
+/* harmony import */ var _components_componentsDB__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/componentsDB */ "./source/js/components/componentsDB.js");
+/* harmony import */ var _components_componentsList__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/componentsList */ "./source/js/components/componentsList.js");
+/* harmony import */ var _components_componentsTrigger__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/componentsTrigger */ "./source/js/components/componentsTrigger.js");
+
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
   let changeTheme = new _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector('html'), document.querySelector('.toggle-mode-input'));
-  let componentsList = new _components_componentsList__WEBPACK_IMPORTED_MODULE_1__["default"]('components');
-  let componentsTrigger = new _components_componentsTrigger__WEBPACK_IMPORTED_MODULE_2__["default"]();
+  let componentsList = new _components_componentsList__WEBPACK_IMPORTED_MODULE_2__["default"]('components', _components_componentsDB__WEBPACK_IMPORTED_MODULE_1__["default"]);
+  let componentsTrigger = new _components_componentsTrigger__WEBPACK_IMPORTED_MODULE_3__["default"]();
 });
 
 /***/ })

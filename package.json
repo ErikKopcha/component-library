@@ -16,13 +16,13 @@
   "author": "Erik Kopcha",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.12.10",
-    "@babel/preset-env": "^7.12.11",
-    "babel": "^6.23.0",
-    "babel-core": "^6.26.3",
+    "@babel/core": "7.12.10",
+    "@babel/preset-env": "7.12.11",
+    "babel": "6.23.0",
+    "babel-core": "6.26.3",
     "babel-loader": "8.2.2",
     "browser-sync": "2.26.7",
-    "core-js": "^3.8.1",
+    "core-js": "3.8.1",
     "del": "5.1.0",
     "gulp": "4.0.2",
     "gulp-autoprefixer": "7.0.1",
@@ -37,7 +37,7 @@
     "gulp-sass": "4.1.0",
     "gulp-uglify": "3.0.2",
     "gulp-webp": "4.0.1",
-    "webpack": "^5.11.1",
+    "webpack": "5.11.1",
     "webpack-stream": "6.1.1"
   },
   "dependencies": {}

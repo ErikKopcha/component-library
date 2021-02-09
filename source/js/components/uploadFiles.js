@@ -12,7 +12,14 @@ class UploadFiles {
   }
 
   init() {
-    this.baseContainer.innerHTML = ``;
+    this.baseContainer.innerHTML = `
+      <div class="upload-file-container">
+        <div class="card d-flex">
+          <button class="components__item">Open</button>
+          <button class="components__item">Download</button>
+        </div>
+      </div>
+    `;
   }
 }
 

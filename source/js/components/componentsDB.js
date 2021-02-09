@@ -1,10 +1,10 @@
 let componentsDB = [
   {
-    "name": "histogram",
+    "name": "files",
     "id": 1
   },
   {
-    "name": "files",
+    "name": "histogram",
     "id": 2
   },
   {
