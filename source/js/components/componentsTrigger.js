@@ -37,15 +37,35 @@ class ComponentsTrigger {
       new ComponentsList('components', componentsDB);
       new ComponentsTrigger();
     });
+    
+    let timeout = null;
 
     this.searchField.addEventListener('input', () => {
       let value = this.searchField.value.toLowerCase().trim();
-
         componentsDB.forEach(el => {
-          try {
+          try {            
             if (el.name.toLowerCase().search(value) == -1) {
               document.querySelector(`[data-name="${el.name}"]`).classList.add('hidden');
+
+              if (value != `` && Array.from(document.querySelectorAll('.components__list .components__item')).some(item => item.classList.contains('hidden'))) {
+              //   if (timeout) {
+              //     clearTimeout(timeout);
+              //   }
+
+              //   timeout = setTimeout(() => {
+              //     document.querySelector('.text__glitch').classList.remove('hidden');
+              //     const text = baffle(".text__glitch");
+
+              //     text.set({
+              //         characters: "█▓█ ▒░/▒░ █░▒▓/ █▒▒ ▓▒▓/█ ░█▒/ ▒▓░ █<░▒ ▓/░>",
+              //         speed: 120
+              //     });
+              //     text.start();
+              //     text.reveal(8000);
+              //   },400);
+              }
             } else {
+              document.querySelector('.text__glitch').classList.add('hidden');
               document.querySelector(`[data-name="${el.name}"]`).classList.remove('hidden');
             }
           } catch(e) {}

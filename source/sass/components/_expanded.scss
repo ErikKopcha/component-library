@@ -4,13 +4,9 @@
     border-radius: 8px;
     overflow: hidden;
 
-    transition: height 0.2s ease-out;
-    height: 72px;
+    transition: all 0.2s ease-out;
+    max-height: 72px;
 }
-
-// .expanded[open] {
-//     height: 186px;
-// }
 
 .expanded__trigger {
     padding: 1.5rem 2rem;
@@ -34,9 +30,3 @@
 .expanded__content {
     padding: 0 2rem 1.5rem 2rem;
 }
-
-// @media all and (min-width: 767px) {
-//     .expanded[open] {
-//         height: 128px;
-//     }
-// }

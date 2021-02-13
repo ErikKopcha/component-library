@@ -411,13 +411,30 @@ class ComponentsTrigger {
       new _componentsList__WEBPACK_IMPORTED_MODULE_6__["default"]('components', _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"]);
       new ComponentsTrigger();
     });
+    let timeout = null;
     this.searchField.addEventListener('input', () => {
       let value = this.searchField.value.toLowerCase().trim();
       _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"].forEach(el => {
         try {
           if (el.name.toLowerCase().search(value) == -1) {
             document.querySelector(`[data-name="${el.name}"]`).classList.add('hidden');
+
+            if (value != `` && Array.from(document.querySelectorAll('.components__list .components__item')).some(item => item.classList.contains('hidden'))) {//   if (timeout) {
+              //     clearTimeout(timeout);
+              //   }
+              //   timeout = setTimeout(() => {
+              //     document.querySelector('.text__glitch').classList.remove('hidden');
+              //     const text = baffle(".text__glitch");
+              //     text.set({
+              //         characters: "█▓█ ▒░/▒░ █░▒▓/ █▒▒ ▓▒▓/█ ░█▒/ ▒▓░ █<░▒ ▓/░>",
+              //         speed: 120
+              //     });
+              //     text.start();
+              //     text.reveal(8000);
+              //   },400);
+            }
           } else {
+            document.querySelector('.text__glitch').classList.add('hidden');
             document.querySelector(`[data-name="${el.name}"]`).classList.remove('hidden');
           }
         } catch (e) {}
@@ -700,11 +717,33 @@ class UploadFiles {
     this.baseContainer.innerHTML = `
       <div class="upload-file-container">
         <div class="card d-flex">
-          <button class="components__item">Open</button>
-          <button class="components__item">Download</button>
+          <input id="input-upload" type="file" class="d-none"/>
+          <button id="btn-upload" class="components__item">Open</button>
+          <button id="btn-download" class="components__item">Download</button>
         </div>
       </div>
     `;
+
+    this._getControlsElements();
+  }
+
+  _getControlsElements() {
+    this.inputUpload = document.getElementById('input-upload');
+    this.btnUpload = document.getElementById('btn-upload');
+    this.btnDownload = document.getElementById('btn-download');
+
+    this._triggers();
+  }
+
+  _triggers() {
+    this.btnUpload.addEventListener('click', () => {
+      this.inputUpload.click();
+    });
+    this.inputUpload.addEventListener('input', () => {
+      if (this.inputUpload.files.length > 0) {
+        console.log(this.inputUpload.files[0].name);
+      }
+    });
   }
 
 }
@@ -731,9 +770,11 @@ __webpack_require__.r(__webpack_exports__);
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  let changeTheme = new _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector('html'), document.querySelector('.toggle-mode-input'));
-  let componentsList = new _components_componentsList__WEBPACK_IMPORTED_MODULE_2__["default"]('components', _components_componentsDB__WEBPACK_IMPORTED_MODULE_1__["default"]);
-  let componentsTrigger = new _components_componentsTrigger__WEBPACK_IMPORTED_MODULE_3__["default"]();
+  new _components_changeTheme__WEBPACK_IMPORTED_MODULE_0__["default"](document.querySelector('html'), document.querySelector('.toggle-mode-input'));
+  setTimeout(() => {
+    new _components_componentsList__WEBPACK_IMPORTED_MODULE_2__["default"]('components', _components_componentsDB__WEBPACK_IMPORTED_MODULE_1__["default"]);
+    new _components_componentsTrigger__WEBPACK_IMPORTED_MODULE_3__["default"]();
+  }, 1000);
 });
 
 /***/ })
