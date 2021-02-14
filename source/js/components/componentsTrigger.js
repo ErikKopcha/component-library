@@ -6,6 +6,7 @@ import Skeleton from './skeleton';
 import Accordion from './accordion';
 import ComponentsList from './componentsList';
 import UploadFiles from './uploadFiles';
+import Search from './search';
 
 class ComponentsTrigger {
   constructor() {
@@ -32,6 +33,8 @@ class ComponentsTrigger {
   }
 
   _triggers() {
+    new Search('search-input', '.components__item');
+
     this.btnBack.addEventListener('click', () => {
       this._hideBtnBack()
       new ComponentsList('components', componentsDB);
@@ -39,38 +42,6 @@ class ComponentsTrigger {
     });
     
     let timeout = null;
-
-    this.searchField.addEventListener('input', () => {
-      let value = this.searchField.value.toLowerCase().trim();
-        componentsDB.forEach(el => {
-          try {            
-            if (el.name.toLowerCase().search(value) == -1) {
-              document.querySelector(`[data-name="${el.name}"]`).classList.add('hidden');
-
-              if (value != `` && Array.from(document.querySelectorAll('.components__list .components__item')).some(item => item.classList.contains('hidden'))) {
-              //   if (timeout) {
-              //     clearTimeout(timeout);
-              //   }
-
-              //   timeout = setTimeout(() => {
-              //     document.querySelector('.text__glitch').classList.remove('hidden');
-              //     const text = baffle(".text__glitch");
-
-              //     text.set({
-              //         characters: "█▓█ ▒░/▒░ █░▒▓/ █▒▒ ▓▒▓/█ ░█▒/ ▒▓░ █<░▒ ▓/░>",
-              //         speed: 120
-              //     });
-              //     text.start();
-              //     text.reveal(8000);
-              //   },400);
-              }
-            } else {
-              document.querySelector('.text__glitch').classList.add('hidden');
-              document.querySelector(`[data-name="${el.name}"]`).classList.remove('hidden');
-            }
-          } catch(e) {}
-        });
-    });
 
     componentsDB.forEach(component => {
       let item = document.querySelector(`[data-name="${component.name}"]`);

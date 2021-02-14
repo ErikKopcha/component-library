@@ -24,7 +24,7 @@
     border: 1px solid #cfcfcf;
     text-transform: uppercase;
     cursor: pointer;
-    transition: background-color 0.2s ease-in;
+    transition: all 0.2s ease-in;
 
     &:hover {
       color: #333333;
@@ -41,23 +41,3 @@
   padding: 5px 15px;
   outline: none;
 }
-
-// .animation-tic {
-//   fill: currentColor;
-//   border: unset;
-//   animation: 3s ease-in 1s infinite tic;
-// }
-
-// @keyframes tic {
-//   0% {
-//     transform: scale(0.7) translateX(-8px);
-//   }
-
-//   50% {
-//     transform: scale(1) translateX(8px);
-//   }
-
-//   100% {
-//     transform: scale(0.7) translateX(-8px);
-//   }
-// }

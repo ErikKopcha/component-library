@@ -371,6 +371,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _accordion__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./accordion */ "./source/js/components/accordion.js");
 /* harmony import */ var _componentsList__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./componentsList */ "./source/js/components/componentsList.js");
 /* harmony import */ var _uploadFiles__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./uploadFiles */ "./source/js/components/uploadFiles.js");
+/* harmony import */ var _search__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./search */ "./source/js/components/search.js");
+
 
 
 
@@ -405,6 +407,7 @@ class ComponentsTrigger {
   }
 
   _triggers() {
+    new _search__WEBPACK_IMPORTED_MODULE_8__["default"]('search-input', '.components__item');
     this.btnBack.addEventListener('click', () => {
       this._hideBtnBack();
 
@@ -412,34 +415,6 @@ class ComponentsTrigger {
       new ComponentsTrigger();
     });
     let timeout = null;
-    this.searchField.addEventListener('input', () => {
-      let value = this.searchField.value.toLowerCase().trim();
-      _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"].forEach(el => {
-        try {
-          if (el.name.toLowerCase().search(value) == -1) {
-            document.querySelector(`[data-name="${el.name}"]`).classList.add('hidden');
-
-            if (value != `` && Array.from(document.querySelectorAll('.components__list .components__item')).some(item => item.classList.contains('hidden'))) {//   if (timeout) {
-              //     clearTimeout(timeout);
-              //   }
-              //   timeout = setTimeout(() => {
-              //     document.querySelector('.text__glitch').classList.remove('hidden');
-              //     const text = baffle(".text__glitch");
-              //     text.set({
-              //         characters: "█▓█ ▒░/▒░ █░▒▓/ █▒▒ ▓▒▓/█ ░█▒/ ▒▓░ █<░▒ ▓/░>",
-              //         speed: 120
-              //     });
-              //     text.start();
-              //     text.reveal(8000);
-              //   },400);
-            }
-          } else {
-            document.querySelector('.text__glitch').classList.add('hidden');
-            document.querySelector(`[data-name="${el.name}"]`).classList.remove('hidden');
-          }
-        } catch (e) {}
-      });
-    });
     _componentsDB__WEBPACK_IMPORTED_MODULE_0__["default"].forEach(component => {
       let item = document.querySelector(`[data-name="${component.name}"]`);
 
@@ -585,6 +560,64 @@ class Histogram {
 }
 
 /* harmony default export */ __webpack_exports__["default"] = (Histogram);
+
+/***/ }),
+
+/***/ "./source/js/components/search.js":
+/*!****************************************!*\
+  !*** ./source/js/components/search.js ***!
+  \****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+class Search {
+  constructor(inputId, items) {
+    this.searchInput = document.getElementById(inputId);
+    this.items = document.querySelectorAll(items);
+    this.search();
+  }
+
+  search() {
+    // event на поле поиска
+    this.searchInput.addEventListener('keyup', () => {
+      // получаем информацию с поиска и убираем пробелы
+      let value = this.searchInput.value.toLowerCase().trim();
+
+      if (value != '') {
+        this.items.forEach(el => {
+          // получаем только текст, без тегов.
+          // search - ищет подстроку в строке и возвращает номер подстроки / -1 (если нет)
+          if (el.innerText.toLowerCase().search(value) == -1) {
+            el.classList.add('hidden');
+          } else {
+            el.classList.remove('hidden');
+          }
+        });
+      } else {
+        this.items.forEach(el => {
+          el.classList.remove('hidden');
+        });
+      }
+    });
+  } // showElement(el) {
+  //   el.style.display = 'block';
+  //   setTimeout(() => {
+  //     el.style.transform = 'scale(1)';
+  //   }, 200);
+  // }
+  // hideElement(el) {
+  //   el.style.transform = 'translateX(-1000px)';
+  //   setTimeout(() => {
+  //     el.style.display = 'none';
+  //   }, 200);
+  // }
+
+
+}
+
+/* harmony default export */ __webpack_exports__["default"] = (Search);
 
 /***/ }),
 

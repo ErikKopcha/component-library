@@ -16,14 +16,14 @@ class Search {
           // получаем только текст, без тегов.
           // search - ищет подстроку в строке и возвращает номер подстроки / -1 (если нет)
           if (el.innerText.toLowerCase().search(value) == -1) {
-            this.hideElement(el);
+            el.classList.add('hidden');
           } else {
-            this.showElement(el);
+            el.classList.remove('hidden');
           }
         });
       } else {
         this.items.forEach(el => {
-          this.showElement(el);
+          el.classList.remove('hidden');
         });
       }
     });
@@ -33,7 +33,7 @@ class Search {
   //   el.style.display = 'block';
 
   //   setTimeout(() => {
-  //     el.style.transform = 'translateX(0)';
+  //     el.style.transform = 'scale(1)';
   //   }, 200);
   // }
 
