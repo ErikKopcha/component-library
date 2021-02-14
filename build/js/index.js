@@ -134,7 +134,6 @@ class Accordion {
             `;
       this.baseContainer.appendChild(accordionItem);
       const trigger = accordionItem.querySelector('.expanded__trigger');
-      const content = accordionItem.querySelector('.expanded__content');
       trigger.addEventListener('click', () => {
         if (accordionItem.classList.contains('open')) {
           accordionItem.classList.remove('open');
