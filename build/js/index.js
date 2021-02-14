@@ -294,10 +294,11 @@ __webpack_require__.r(__webpack_exports__);
 let componentsDB = [{
   "name": "custom select",
   "id": 1
-}, {
-  "name": "files",
-  "id": 2
-}, {
+}, // {
+//   "name": "files",
+//   "id": 2
+// },
+{
   "name": "histogram",
   "id": 3
 }, {
