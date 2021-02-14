@@ -44,10 +44,10 @@ class Accordion {
             trigger.addEventListener('click', () => {
                 if (accordionItem.classList.contains('open')) {
                     accordionItem.classList.remove('open');
-                    accordionItem.style.height = ``;
+                    accordionItem.style.maxHeight = '72px';
                 } else {
                     accordionItem.classList.add('open');
-                    accordionItem.style.height = `${trigger.offsetHeight + 100}px`;
+                    accordionItem.style.maxHeight = `${100}vh`;
                 }
             });
         }
