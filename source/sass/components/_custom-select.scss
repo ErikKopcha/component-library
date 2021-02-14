@@ -1,0 +1,86 @@
+/* ------------- custom select style ------------- */
+
+.custom-select {
+  width: 250px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid rgb(189, 189, 189);
+  background-color: #ffffff;
+  color: var(--black);
+  cursor: pointer;
+  margin: 0 auto;
+}
+
+.custom-select .custom-select__input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 20px;
+}
+
+.custom-select .custom-select__dropdown {
+  display: none;
+  position: absolute;
+  left: -1px;
+  width: 100%;
+  max-height: 200px;
+  overflow: auto;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 3px;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.custom-select .custom-select__dropdown li {
+  padding: 10px 15px;
+  border-bottom: 1px solid rgb(189, 189, 189);
+  cursor: pointer;
+  background-color: #ffffff;
+  color: var(--black);
+
+  input {
+    padding: 0 0.8rem;
+    &::placeholder {
+      color: var(--grey-3);
+    }
+  }
+
+}
+
+.custom-select .custom-select__dropdown li:hover {
+  background-color: rgb(236, 236, 236);
+}
+
+.custom-select .custom-select__dropdown li.selected {
+  background-color: rgb(226, 226, 226);
+}
+
+.custom-select.open-custom-select .custom-select__dropdown {
+  display: block;
+}
+
+.custom-select .custom-select__backdrop {
+  display: none;
+  cursor: default !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: transparent;
+}
+
+.custom-select.open-custom-select .custom-select__backdrop {
+  display: block;
+}
+
+.select-search {
+  width: 100%;
+  min-height: 40px;
+  background: #ffffff;
+  border-color: transparent;
+  background-color: #eeeeee;
+  border-radius: 5px;
+  color: var(--black);
+}
+
+/* ------------- custom select style end ------------- */

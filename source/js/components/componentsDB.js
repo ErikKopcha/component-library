@@ -1,27 +1,31 @@
 let componentsDB = [
   {
-    "name": "files",
+    "name": "custom select",
     "id": 1
   },
   {
-    "name": "histogram",
+    "name": "files",
     "id": 2
   },
   {
-    "name": "calendar",
+    "name": "histogram",
     "id": 3
   },
   {
-    "name": "accordion",
+    "name": "calendar",
     "id": 4
   },
   {
-    "name": "skeleton",
+    "name": "accordion",
     "id": 5
   },
   {
-    "name": "tooltip",
+    "name": "skeleton",
     "id": 6
+  },
+  {
+    "name": "tooltip",
+    "id": 7
   }
 ];
 

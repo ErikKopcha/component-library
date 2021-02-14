@@ -7,7 +7,7 @@ import Accordion from './accordion';
 import ComponentsList from './componentsList';
 import UploadFiles from './uploadFiles';
 import Search from './search';
-
+import CustomSelect from './customSelect';
 class ComponentsTrigger {
   constructor() {
     
@@ -41,8 +41,6 @@ class ComponentsTrigger {
       new ComponentsTrigger();
     });
     
-    let timeout = null;
-
     componentsDB.forEach(component => {
       let item = document.querySelector(`[data-name="${component.name}"]`);
 
@@ -71,6 +69,24 @@ class ComponentsTrigger {
               break;
             case 'files': 
               new UploadFiles(`components`);
+              break;
+            case 'custom select':
+              let selectObj = {
+                placeholder: 'Виберіть елемент',
+                selectedId: '',
+                data: [
+                    {id: 1, value: 'React'},
+                    {id: 2, value: 'Angular'},
+                    {id: 3, value: 'Vue'},
+                    {id: 4, value: 'Nest'},
+                    {id: 5, value: 'Next'}
+                ],
+                onSelect(item) {
+                    console.log('selected item =>', item);
+                }
+              };
+            
+              new CustomSelect('components', selectObj);
               break;
           }
         });

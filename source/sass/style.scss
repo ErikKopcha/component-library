@@ -12,6 +12,9 @@
 @import "./resets/_reset";
 @import "./resets/_typography";
 
+/* imports */
+@import url('https://pro.fontawesome.com/releases/v5.10.0/css/all.css');
+
 /* globals */
 @import "_mode";
 @import "_grid";
@@ -32,3 +35,4 @@
 @import "./components/_calendar";
 @import "./components/_historgam";
 @import "./components/_uploadFile";
+@import "./components/custom-select";
